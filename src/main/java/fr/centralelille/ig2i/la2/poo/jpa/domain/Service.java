@@ -1,6 +1,7 @@
 package fr.centralelille.ig2i.la2.poo.jpa.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import fr.centralelille.ig2i.la2.poo.jpa.domain.medecin.Medecin;
 import lombok.Data;
 
 import javax.persistence.*;

@@ -1,31 +1,31 @@
 package fr.centralelille.ig2i.la2.poo.jpa.controller;
 
-import fr.centralelille.ig2i.la2.poo.jpa.domain.Medecin;
-import fr.centralelille.ig2i.la2.poo.jpa.repository.MedecinRepository;
+import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.BusinessException;
+import fr.centralelille.ig2i.la2.poo.jpa.domain.medecin.Medecin;
+import fr.centralelille.ig2i.la2.poo.jpa.domain.medecin.MedecinNotFoundException;
+import fr.centralelille.ig2i.la2.poo.jpa.domain.medecin.MedecinService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/medecin")
 @RequiredArgsConstructor
 public class MedecinController {
 
-    private final MedecinRepository medecinRepository;
+    private final MedecinService medecinService;
 
     @GetMapping("/{idMedecin}")
-    public ResponseEntity<Medecin> getMedecinByIdMedecin(@PathVariable String idMedecin){
+    public ResponseEntity<Medecin> getMedecinByIdMedecin(@PathVariable String idMedecin) throws MedecinNotFoundException {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(medecinRepository.getMedecinByIdMedecin(idMedecin));
+                .body(medecinService.findMedecin(idMedecin));
     }
 
     @PostMapping
-    public ResponseEntity<?> postMedecin(@RequestBody Medecin medecin){
-        if (medecin.getIdMedecin() == null) medecin.setIdMedecin(UUID.randomUUID().toString());
-        medecinRepository.save(medecin);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<?> postMedecin(@RequestBody Medecin medecin) throws BusinessException {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header("Location", medecinService.createMedcin(medecin))
+                .build();
     }
 }
