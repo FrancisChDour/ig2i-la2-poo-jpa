@@ -6,6 +6,6 @@ public interface MedecinService {
 
     Medecin findMedecin(String idMedecin) throws MedecinNotFoundException;
 
-    String createMedcin(Medecin medecin) throws BusinessException;
+    String createMedecin(Medecin medecin) throws BusinessException;
 
 }

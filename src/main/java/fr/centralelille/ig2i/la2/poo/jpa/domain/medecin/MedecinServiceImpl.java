@@ -22,18 +22,13 @@ public class MedecinServiceImpl implements MedecinService {
     }
 
     @Override
-    public String createMedcin(Medecin medecin) throws BusinessException {
+    public String createMedecin(Medecin medecin) throws BusinessException {
         Optional.ofNullable(medecin).orElseThrow(() -> new BusinessException(ErrorMessage.builder()
                 .error("medecin.notProvided")
                 .message("Aucun médecin fourni")
                 .build()));
 
-        if (medecin.getIdMedecin() == null) medecin.setIdMedecin(UUID.randomUUID().toString());
-        else Optional.ofNullable(medecinRepository.getMedecinByIdMedecin(medecin.getIdMedecin()))
-                .orElseThrow(() -> new BusinessException(ErrorMessage.builder()
-                        .error("medecin.alreadyExists")
-                        .message("Ce médecin existe déjà")
-                        .build()));
+        medecin.setIdMedecin(UUID.randomUUID().toString());
 
         medecinRepository.save(medecin);
         return medecin.getIdMedecin();

@@ -25,7 +25,7 @@ public class MedecinController {
     @PostMapping
     public ResponseEntity<?> postMedecin(@RequestBody Medecin medecin) throws BusinessException {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .header("Location", medecinService.createMedcin(medecin))
+                .header("Location", medecinService.createMedecin(medecin))
                 .build();
     }
 }
