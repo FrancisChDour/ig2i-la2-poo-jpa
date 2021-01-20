@@ -25,16 +25,7 @@ public class Medecin {
     private Service service;
 
     @OneToMany(mappedBy = "chef")
-    @JsonIgnoreProperties({"medecins"})
+    @JsonIgnoreProperties({"medecins", "chef"})
     private List<Service> servicesDiriges;
-
-//    @ManyToOne()
-//    @JoinColumn(name = "chef_id_medecin")
-//    @JsonIgnoreProperties({"service", "servicesDiriges"})
-//    private Medecin chef;
-//
-//    @OneToMany(mappedBy = "chef")
-//    @JsonIgnoreProperties({"chef", "service"})
-//    private List<Medecin> medecinsDiriges;
 
 }

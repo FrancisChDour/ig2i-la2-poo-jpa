@@ -2,9 +2,7 @@ package fr.centralelille.ig2i.la2.poo.jpa.domain.medecin;
 
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.ErrorMessage;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.NotFoundException;
-import lombok.Data;
 
-@Data
 public class MedecinNotFoundException extends NotFoundException {
 
     private static final String error = "medecin.notFound";
