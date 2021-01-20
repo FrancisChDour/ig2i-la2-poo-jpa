@@ -1,7 +1,7 @@
 package fr.centralelille.ig2i.la2.poo.jpa.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import fr.centralelille.ig2i.la2.poo.jpa.domain.medecin.Medecin;
+import fr.centralelille.ig2i.la2.poo.jpa.domain.personne.medecin.Medecin;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,8 +13,8 @@ import java.util.List;
 public class Service {
 
     @Id
-    @Column(name = "id_service")
-    private String idService;
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "nom")
     private String nom;
@@ -27,7 +27,6 @@ public class Service {
     private List<Medecin> medecins;
 
     @ManyToOne()
-    @JoinColumn(name = "id_medecin")
     @JsonIgnoreProperties({"service", "servicesDiriges"})
     private Medecin chef;
 

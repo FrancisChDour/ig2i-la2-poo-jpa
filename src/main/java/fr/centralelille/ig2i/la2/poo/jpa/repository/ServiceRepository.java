@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ServiceRepository extends JpaRepository<Service, String> {
 
-    Service getServiceByIdService(String idMedecin);
+    Service getServiceById(String idMedecin);
 
 }

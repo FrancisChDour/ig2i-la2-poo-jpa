@@ -1,7 +1,8 @@
-package fr.centralelille.ig2i.la2.poo.jpa.domain.medecin;
+package fr.centralelille.ig2i.la2.poo.jpa.domain.personne.medecin;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.Service;
+import fr.centralelille.ig2i.la2.poo.jpa.domain.personne.Personne;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,14 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "medecin")
 @Data // Génère les getters, setters, constructeurs ...
-public class Medecin {
-
-    @Id
-    @Column(name = "id_medecin")
-    private String idMedecin;
-
-    @Column(name = "nom")
-    private String nom;
+public class Medecin extends Personne {
 
     @ManyToOne()
     @JoinColumn(name = "id_service")

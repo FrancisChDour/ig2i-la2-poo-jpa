@@ -1,4 +1,4 @@
-package fr.centralelille.ig2i.la2.poo.jpa.domain.medecin;
+package fr.centralelille.ig2i.la2.poo.jpa.domain.personne.medecin;
 
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.BusinessException;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.ErrorMessage;
@@ -17,7 +17,7 @@ public class MedecinServiceImpl implements MedecinService {
 
     @Override
     public Medecin findMedecin(String idMedecin) throws MedecinNotFoundException {
-        return Optional.ofNullable(medecinRepository.getMedecinByIdMedecin(idMedecin))
+        return Optional.ofNullable(medecinRepository.getMedecinById(idMedecin))
                 .orElseThrow(() -> new MedecinNotFoundException(idMedecin));
     }
 
@@ -28,9 +28,9 @@ public class MedecinServiceImpl implements MedecinService {
                 .message("Aucun médecin fourni")
                 .build()));
 
-        medecin.setIdMedecin(UUID.randomUUID().toString());
+        medecin.setId(UUID.randomUUID().toString());
 
         medecinRepository.save(medecin);
-        return medecin.getIdMedecin();
+        return medecin.getId();
     }
 }

@@ -1,4 +1,4 @@
-package fr.centralelille.ig2i.la2.poo.jpa.domain.medecin;
+package fr.centralelille.ig2i.la2.poo.jpa.domain.personne.medecin;
 
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.ErrorMessage;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.NotFoundException;

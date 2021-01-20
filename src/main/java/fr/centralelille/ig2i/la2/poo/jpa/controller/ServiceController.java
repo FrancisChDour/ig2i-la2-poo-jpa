@@ -19,12 +19,12 @@ public class ServiceController {
     @GetMapping("/{idService}")
     public ResponseEntity<Service> getMedecinByidService(@PathVariable String idService){
         return ResponseEntity.status(HttpStatus.OK)
-                .body(serviceRepository.getServiceByIdService(idService));
+                .body(serviceRepository.getServiceById(idService));
     }
 
     @PostMapping
     public ResponseEntity<?> postService(@RequestBody Service service){
-        if (service.getIdService() == null) service.setIdService(UUID.randomUUID().toString());
+        if (service.getId() == null) service.setId(UUID.randomUUID().toString());
         serviceRepository.save(service);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
