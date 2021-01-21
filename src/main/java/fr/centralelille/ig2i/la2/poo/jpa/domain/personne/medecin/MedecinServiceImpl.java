@@ -3,7 +3,6 @@ package fr.centralelille.ig2i.la2.poo.jpa.domain.personne.medecin;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.BusinessException;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.ErrorMessage;
 import fr.centralelille.ig2i.la2.poo.jpa.repository.MedecinRepository;
-import fr.centralelille.ig2i.la2.poo.jpa.repository.ServiceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +16,6 @@ import java.util.stream.Collectors;
 public class MedecinServiceImpl implements MedecinService {
 
     private final MedecinRepository medecinRepository;
-
-    private final ServiceRepository serviceRepository;
 
     @Override
     public Medecin findMedecin(String idMedecin) throws MedecinNotFoundException {
