@@ -1,7 +1,6 @@
 package fr.centralelille.ig2i.la2.poo.jpa.domain.personne.medecin;
 
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.BusinessException;
-import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.NotFoundException;
 
 import java.util.List;
 
@@ -11,6 +10,8 @@ public interface MedecinService {
 
     String createMedecin(Medecin medecin) throws BusinessException;
 
-    List<Medecin> getSubordonnedMedecin(String idMedecin) throws BusinessException, NotFoundException;
+    List<Medecin> getSubordonnedMedecin(String idMedecin) throws MedecinNotFoundException;
+
+    List<Medecin> getSubordonnedMedecinJPQL(String idMedecin);
 
 }

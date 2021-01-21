@@ -1,4 +1,4 @@
-package fr.centralelille.ig2i.la2.poo.jpa.domain;
+package fr.centralelille.ig2i.la2.poo.jpa.domain.service;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.personne.medecin.Medecin;

@@ -1,6 +1,6 @@
 package fr.centralelille.ig2i.la2.poo.jpa.controller;
 
-import fr.centralelille.ig2i.la2.poo.jpa.domain.Service;
+import fr.centralelille.ig2i.la2.poo.jpa.domain.service.Service;
 import fr.centralelille.ig2i.la2.poo.jpa.repository.ServiceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ServiceController {
 
+    // On peut utiliser le repo JPA tels quel, même si une séparation des couches est préférable
     private final ServiceRepository serviceRepository;
 
     @GetMapping("/{idService}")

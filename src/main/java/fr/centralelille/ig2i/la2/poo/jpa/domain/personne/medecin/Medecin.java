@@ -1,7 +1,7 @@
 package fr.centralelille.ig2i.la2.poo.jpa.domain.personne.medecin;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import fr.centralelille.ig2i.la2.poo.jpa.domain.Service;
+import fr.centralelille.ig2i.la2.poo.jpa.domain.service.Service;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.personne.Personne;
 import lombok.Data;
 
