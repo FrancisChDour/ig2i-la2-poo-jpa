@@ -20,4 +20,12 @@ public interface MedecinRepository extends JpaRepository<Medecin, String> {
             nativeQuery = true)
     List<Medecin> getSubordonnedMedecin(@Param("idMedecin") String idMedecin);
 
+
+    @Query(value = "select m.id from service s " +
+            "inner join medecin m on s.id = m.id_service " +
+            "where s.chef_id = :idMedecin " +
+            "and m.id != :idMedecin",
+            nativeQuery = true)
+    List<String> getSubordonnedMedecinIds(@Param("idMedecin") String idMedecin);
+
 }

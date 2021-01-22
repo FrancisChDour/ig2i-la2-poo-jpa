@@ -14,4 +14,6 @@ public interface MedecinService {
 
     List<Medecin> getSubordonnedMedecinJPQL(String idMedecin);
 
+    List<String> getSubordonnedMedecinIdsJPQL(String idMedecin);
+
 }

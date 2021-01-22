@@ -56,4 +56,9 @@ public class MedecinServiceImpl implements MedecinService {
     public List<Medecin> getSubordonnedMedecinJPQL(String idMedecin) {
         return medecinRepository.getSubordonnedMedecin(idMedecin);
     }
+
+    @Override
+    public List<String> getSubordonnedMedecinIdsJPQL(String idMedecin) {
+        return medecinRepository.getSubordonnedMedecinIds(idMedecin);
+    }
 }
