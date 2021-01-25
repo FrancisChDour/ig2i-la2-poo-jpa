@@ -1,5 +1,36 @@
 # ig2i-la2-poo-jpa
 
+## Etape 6 : héritage
+
+Patient et Médecin possède des attributs en commun : id, nom, prenom. De ce fait on peut modéliser nos deux classes en Java comme héritantes d'une classe abstraite Personne qui
+possèdera ces attributs communs :
+
+````java
+@Data
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public abstract class Personne {
+
+    @Id
+    @Column(name = "id")
+    private String id;
+
+    @Column(name = "nom")
+    private String nom;
+
+    @Column(name = "prenom")
+    private String prenom;
+
+}
+````
+L'annotation ```@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)``` indique qu'une classe Entity pourra hériter de cette classe Personne.
+L'option ```strategy=InheritanceType.TABLE_PER_CLASS``` indique la statégie de gestion de cette héritage dans la base de données.
+En l'occurence ici, chaque table possèdera distinctement les colonnes id, nom et prenom.
+
+Autres statégies d'héritage possible :
++ ```InheritanceType.SINGLE_TABLE``` : Pas de tables distinctes, tout est stocké à plat dans la même table.
++ ```InheritanceType.JOINED``` : Deux tables distinctes, ici personne et medecin par exemple, reliées entre elles par une jointure.
+
 ## Etape 7 : classe insérée
 
 Pour rajouter l'adresse d'un patient, et que cette classe adresse qui peut être générique soit utilisable par d'autres entités,
