@@ -3,6 +3,7 @@ package fr.centralelille.ig2i.la2.poo.jpa.domain.personne.medecin;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.BusinessException;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.ErrorMessage;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.personne.Personne;
+import fr.centralelille.ig2i.la2.poo.jpa.repository.JDBCRepository;
 import fr.centralelille.ig2i.la2.poo.jpa.repository.MedecinRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ import java.util.stream.Collectors;
 public class MedecinServiceImpl implements MedecinService {
 
     private final MedecinRepository medecinRepository;
+
+    private final JDBCRepository jdbcRepository;
 
     @Override
     public Medecin findMedecin(String idMedecin) throws MedecinNotFoundException {
@@ -61,6 +64,11 @@ public class MedecinServiceImpl implements MedecinService {
     @Override
     public List<String> getSubordonnedMedecinIdsJPQL(String idMedecin) {
         return medecinRepository.getSubordonnedMedecinIds(idMedecin);
+    }
+
+    @Override
+    public List<String> getSubordonnedMedecinIdsJDBC(String idMedecin) {
+        return jdbcRepository.getSubordonnedMedecinIdsJDBC(idMedecin);
     }
 
     @Override

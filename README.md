@@ -91,3 +91,36 @@ Alors on retrouve bien ces informations en base de données :
 +------------------------------------+--------+--------+-------------+--------------+-----------------------+-------------+
 
 ```
+
+## Comparaison des performances entre JPA, JPQL et JDBC
+
+Création d'un grand nombre de médecins en bouclant sur un appel POST:/medecin :
+
+```bash
+curl --location --request POST 'http://localhost:8080/medecin' \
+--header 'Content-Type: application/json' \
+--data '{
+  "nom": "TEST",
+  "prenom": "TEST",
+  "service": {
+    "id": "2"
+  }
+}'
+```
+```bash
+for i in {1..500}; do bash test.sh; done
+```
+On possède maintenant un nombre important de médecins pour un service donné. On effectue ensuite un certain nombre d'appels sur les endpoints 
++ /medecin/{idMedecin}/subordonnesIds qui requête la BDD avec JPA
++ /medecin/{idMedecin}/subordonnesIdsJPQL qui requête la BDD avec une requête JPQL
++ /medecin/{idMedecin}/subordonnesIdsJDBC qui requête la BDD avec JDBC
+
+Jusqu'à avoir une moyenne du temps de réponse pour chaque endpoint :
+
++ /medecin/{idMedecin}/subordonnesIds : ~500ms pour 26.1 ko
++ /medecin/{idMedecin}/subordonnesIdsJPQL : ~200ms pour 26.1 ko
++ /medecin/{idMedecin}/subordonnesIdsJDBC : ~200ms pour 26.1 ko
+
+**Conclusion :**
+
+Pour une grande quantités de données, manipuler la données en naviguant dans des objets Java récupérés avec les interfaces JPA semble moins performant que de récupérer la données via une requête JPQL ou JDBC spécifique. Pas de perte de performance constatée entre JDBC et JPQL.

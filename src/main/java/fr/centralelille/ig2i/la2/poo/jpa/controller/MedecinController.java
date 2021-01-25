@@ -49,6 +49,12 @@ public class MedecinController {
                 .body(medecinService.getSubordonnedMedecinIds(idMedecin));
     }
 
+    @GetMapping("/{idMedecin}/subordonnesIdsJDBC")
+    public ResponseEntity<List<String>> getSubordonnedMedecinsIdsJDBC(@PathVariable String idMedecin) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(medecinService.getSubordonnedMedecinIdsJPQL(idMedecin));
+    }
+
     @PostMapping
     public ResponseEntity<?> postMedecin(@RequestBody Medecin medecin) throws BusinessException {
         return ResponseEntity.status(HttpStatus.CREATED)
