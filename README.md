@@ -1,5 +1,12 @@
 # ig2i-la2-poo-jpa
 
+## Lancement de l'application
+Dans le répertoire du projet :
+```
+mvn clean install
+java -jar target/jpa-0.0.1-SNAPSHOT.jar
+```
+
 ## Etape 6 : héritage
 
 Patient et Médecin possède des attributs en commun : id, nom, prenom. De ce fait on peut modéliser nos deux classes en Java comme héritantes d'une classe abstraite Personne qui
