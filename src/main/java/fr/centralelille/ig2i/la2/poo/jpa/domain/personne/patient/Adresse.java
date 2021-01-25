@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Data
-@Embeddable
+@Embeddable // Permet à cette classe d'être incluse dans d'autres classe Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Adresse {
 

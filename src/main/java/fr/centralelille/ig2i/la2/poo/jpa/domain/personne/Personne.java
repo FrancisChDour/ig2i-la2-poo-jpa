@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
+// Définit cette classe comme Entity qui sera hérité par d'autres
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Personne {
 

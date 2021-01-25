@@ -13,8 +13,10 @@ import javax.persistence.Table;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Patient extends Personne {
 
+    // Sans préciser @Column ..., Hibernate semble reconnaître qu'il sagit de la colonne numero_secu
     private String numeroSecu;
 
+    // Simplement rajouter la Embeddable classe Adresse comme un Attribut de Patient
     private Adresse adresse;
 
 }
