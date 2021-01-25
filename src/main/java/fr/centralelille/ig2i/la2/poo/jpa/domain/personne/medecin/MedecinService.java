@@ -16,4 +16,6 @@ public interface MedecinService {
 
     List<String> getSubordonnedMedecinIdsJPQL(String idMedecin);
 
+    List<String> getSubordonnedMedecinIds(String idMecin) throws MedecinNotFoundException;
+
 }

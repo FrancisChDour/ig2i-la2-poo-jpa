@@ -2,6 +2,7 @@ package fr.centralelille.ig2i.la2.poo.jpa.domain.personne.medecin;
 
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.BusinessException;
 import fr.centralelille.ig2i.la2.poo.jpa.domain.exceptions.ErrorMessage;
+import fr.centralelille.ig2i.la2.poo.jpa.domain.personne.Personne;
 import fr.centralelille.ig2i.la2.poo.jpa.repository.MedecinRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -60,5 +61,16 @@ public class MedecinServiceImpl implements MedecinService {
     @Override
     public List<String> getSubordonnedMedecinIdsJPQL(String idMedecin) {
         return medecinRepository.getSubordonnedMedecinIds(idMedecin);
+    }
+
+    @Override
+    public List<String> getSubordonnedMedecinIds(String idMedecin) throws MedecinNotFoundException {
+
+        return Optional.ofNullable(medecinRepository.getMedecinById(idMedecin))
+                .orElseThrow(() -> new MedecinNotFoundException(idMedecin))
+                .getServicesDiriges()
+                .stream()
+                .flatMap(service -> service.getMedecins().stream().map(Personne::getId))
+                .collect(Collectors.toList());
     }
 }

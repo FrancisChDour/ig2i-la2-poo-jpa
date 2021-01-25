@@ -37,6 +37,18 @@ public class MedecinController {
                 .body(medecinService.getSubordonnedMedecin(idMedecin));
     }
 
+    @GetMapping("/{idMedecin}/subordonnesIdsJPQL")
+    public ResponseEntity<List<String>> getSubordonnedMedecinsIdsJPQL(@PathVariable String idMedecin) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(medecinService.getSubordonnedMedecinIdsJPQL(idMedecin));
+    }
+
+    @GetMapping("/{idMedecin}/subordonnesIds")
+    public ResponseEntity<List<String>> getSubordonnedMedecinsIds(@PathVariable String idMedecin) throws NotFoundException {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(medecinService.getSubordonnedMedecinIds(idMedecin));
+    }
+
     @PostMapping
     public ResponseEntity<?> postMedecin(@RequestBody Medecin medecin) throws BusinessException {
         return ResponseEntity.status(HttpStatus.CREATED)
